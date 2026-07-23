@@ -44,9 +44,19 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-/* Hide standard header spacing and toolbar for a fully custom web console experience */
+/* Header & Sidebar Controls */
 [data-testid="stHeader"] {
-    display: none !important;
+    background-color: transparent !important;
+    z-index: 100 !important;
+}
+[data-testid="stSidebarCollapsedControl"], [data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+    color: #ffffff !important;
+    background-color: #18181b !important;
+    border: 1px solid #27272a !important;
+    border-radius: 6px !important;
+    margin: 8px !important;
 }
 [data-testid="stToolbar"] {
     right: 1.5rem !important;
