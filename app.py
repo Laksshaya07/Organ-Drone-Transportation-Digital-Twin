@@ -423,46 +423,7 @@ st.sidebar.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# 7.5 MACHINE LEARNING MODEL SUMMARY
-ml_metrics = get_ml_metrics()
-if ml_metrics:
-    importances = ml_metrics.get("feature_importances", {})
-    sorted_importances = sorted(importances.items(), key=lambda x: x[1], reverse=True)
-    
-    importance_html_items = []
-    for f, imp in sorted_importances:
-        f_clean = f.replace("_", " ").title()
-        importance_html_items.append(
-            f'<div style="margin-top: 6px;">'
-            f'<div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #a1a1aa; margin-bottom: 1px;">'
-            f'<span>{f_clean}</span>'
-            f'<span style="font-family: monospace;">{imp*100:.1f}%</span>'
-            f'</div>'
-            f'<div style="background-color: #27272a; height: 4px; border-radius: 2px; width: 100%;">'
-            f'<div style="background-color: #3b82f6; width: {imp*100}%; height: 100%; border-radius: 2px;"></div>'
-            f'</div>'
-            f'</div>'
-        )
-    importance_html = "".join(importance_html_items)
-        
-    sidebar_card_html = (
-        f'<div style="background-color: #121214; padding: 15px; border-radius: 8px; border: 1px solid #27272a; margin-bottom: 15px;">'
-        f'<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">'
-        f'<span style="font-weight: bold; font-size: 1.0em; color: #ffffff;">🌲 RandomForest Dispatcher</span>'
-        f'<span style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.2); padding: 2px 6px; border-radius: 4px; font-size: 0.75em; font-weight: bold;">'
-        f'ACC: {ml_metrics.get("accuracy", 0.95)*100:.1f}%'
-        f'</span>'
-        f'</div>'
-        f'<div style="font-size: 0.82em; color: #a1a1aa; line-height: 1.4; margin-bottom: 8px;">'
-        f'Trained on <strong style="color: #fafafa;">{ml_metrics.get("n_samples", 1200)}</strong> historical medical flights in Chennai.'
-        f'</div>'
-        f'<div style="font-size: 0.8em; font-weight: 600; color: #fafafa; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">'
-        f'Feature Importance Weights:'
-        f'</div>'
-        f'{importance_html}'
-        f'</div>'
-    )
-    st.sidebar.markdown(sidebar_card_html, unsafe_allow_html=True)
+
 
 # Quick Seed Utility (Grader cheat code)
 st.sidebar.subheader("🧪 Rapid Testing Suite")
